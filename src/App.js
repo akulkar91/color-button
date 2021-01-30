@@ -9,13 +9,15 @@ function App() {
   return (
     <div>
       <button
-        style={{backgroundColor: color}}
+        style={isChecked ? {backgroundColor: 'gray'}: {backgroundColor: color}}
         onClick={ () => setColor(buttonColorText) }
         disabled={isChecked}
       >
         Change to {buttonColorText}
       </button>
+      <label htmlFor="disable-button-checkbox">Disable button</label>
       <input
+        id="disable-button-checkbox"
         type="checkbox"
         checked={isChecked}
         aria-checked={isChecked}
