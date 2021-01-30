@@ -20,7 +20,7 @@ test('Button turns blue when clicked', () => {
   const colorButton = screen.getByRole('button', { name: 'Change to blue'});
 
   //fire a click event and check if the color and text has been changed
-  fireEvent.click(screen.getByRole('button'));
+  fireEvent.click(colorButton);
 
   // check the background color to be blue
 
@@ -33,7 +33,7 @@ test('Button turns blue when clicked', () => {
 });
 
 test('initial conditions', () => {
-  render(<App/>)
+  render(<App/>);
   // check that the button starts out enabled
   const colorButton = screen.getByRole('button',{ name: 'Change to blue' });
 
@@ -42,4 +42,32 @@ test('initial conditions', () => {
   // check that the check box start out checked
   const checkbox = screen.getByRole('checkbox');
   expect(checkbox).not.toBeChecked();
+})
+
+test('button functionality based on checkbox', () => {
+  //render the App component to test 
+  render(<App/>);
+
+  // have the elements ready
+  
+  // button element  
+  const colorButton = screen.getByRole('button', { name: 'Change to blue'});
+  // checkbox element
+  const checkbox = screen.getByRole('checkbox');
+
+  //steps to check the functionality
+
+  //1. click on checkbox
+  fireEvent.click(checkbox);
+  // checkbox should be enabled
+  expect(checkbox).toBeChecked();
+  
+  // expect the button to be disabled
+  expect(colorButton).toBeDisabled();
+
+  // checking the conditions for other second actions
+  
+  fireEvent.click(checkbox);
+  expect(checkbox).not.toBeChecked();
+  expect(colorButton).toBeEnabled();
 })
