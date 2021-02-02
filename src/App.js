@@ -5,9 +5,9 @@ export function replaceCamelCaseWithSpaces(text) {
  return text.replace(/\B([A-Z])\B/g, ' $1');
 }
 function App() {
-  const [color, setColor] = useState('red');
+  const [color, setColor] = useState('MediumVioletRed');
   const [isChecked, setIsChecked] = useState(false);
-  const buttonColorText = color === 'red' ? 'blue' : 'red';
+  const buttonColorText = color === 'MediumVioletRed' ? 'MidnightBlue' : 'MediumVioletRed';
   return (
     <div>
       <button
@@ -15,7 +15,7 @@ function App() {
         onClick={ () => setColor(buttonColorText) }
         disabled={isChecked}
       >
-        Change to {buttonColorText}
+        Change to {replaceCamelCaseWithSpaces(buttonColorText)}
       </button>
       <label htmlFor="disable-button-checkbox">Disable button</label>
       <input
